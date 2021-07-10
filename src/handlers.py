@@ -1,6 +1,6 @@
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
-from src.constants import WEB_TO_PDF
+from constants import WEB_TO_PDF
 
 
 def start(update, context):

@@ -2,7 +2,7 @@ import os
 from telegram import ChatAction
 from telegram.ext import ConversationHandler
 
-from src.utils import is_url, url_to_pdf
+from utils import is_url, url_to_pdf
 
 
 def input_web_url(update, context):

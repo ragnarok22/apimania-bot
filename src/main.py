@@ -2,10 +2,10 @@ import os
 from dotenv import load_dotenv
 from telegram.ext import Updater, CommandHandler, ConversationHandler, MessageHandler, Filters, CallbackQueryHandler
 
-from src.callbacks import web_to_pdf_handler
-from src.constants import WEB_TO_PDF
-from src.conversations import input_web_url
-from src.handlers import start, about, set_lang, web_to_pdf
+from callbacks import web_to_pdf_handler
+from constants import WEB_TO_PDF
+from conversations import input_web_url
+from handlers import start, about, set_lang, web_to_pdf
 
 if __name__ == '__main__':
     load_dotenv()

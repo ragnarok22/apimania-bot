@@ -1,7 +1,7 @@
 import urllib.request
 import re
 
-from src.constants import APIMANIA_URL
+from constants import APIMANIA_URL
 
 
 def is_url(url: str) -> bool:
