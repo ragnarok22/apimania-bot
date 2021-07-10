@@ -2,7 +2,7 @@ import os
 from telegram import ChatAction
 from telegram.ext import ConversationHandler
 
-from src.utils import is_url, url_to_pdf
+from src.utils import is_url, url_to_pdf, get_filename_from_url
 
 
 def input_web_url(update, context):
@@ -13,7 +13,7 @@ def input_web_url(update, context):
     if is_url(url):
         print('the URL is correct')
         # capture de web
-        filename = 'url-apimania.pdf'
+        filename = get_filename_from_url(url)
         url_to_pdf(url, filename)
         # send the pdf
         chat.send_action(

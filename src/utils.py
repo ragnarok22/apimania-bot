@@ -24,9 +24,13 @@ def download_file(download_url: str, filename: str) -> None:
 
 def url_to_pdf(url: str, filename: str) -> None:
     url = "{}/pdf?url={}".format(APIMANIA_URL, url)
-    download_file(url, filename)
+    download_file(url, "{}.pdf".format(filename))
 
 
 def convert_text_to_img(text: str) -> None:
     url = "{}/txt2img?text={}".format(APIMANIA_URL, text)
     download_file(url, "{}.png".format(text))
+
+
+def get_filename_from_url(url: str) -> str:
+    return url.split('://')[1].replace('.', '-')
