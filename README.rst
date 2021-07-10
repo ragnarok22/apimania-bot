@@ -1,5 +1,5 @@
 ============
-Apimania BOt
+Apimania Bot
 ============
 
 
@@ -20,7 +20,7 @@ Telegram bot for dsoto's apimania
 
 
 * Free software: MIT license
-* Documentation: https://apimania-bot.readthedocs.io.
+* Documentation: docs/
 
 
 Features
@@ -31,7 +31,8 @@ Features
 Credits
 -------
 
-This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+This bot was created by Ragnarok22_ using the dsoto_'s APImania_
 
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+.. _Ragnarok22: https://ragnarok22.dev
+.. _dsoto: https://dsoto.dev
+.. _APImania: https://apimania.dsoto.dev
