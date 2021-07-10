@@ -1,0 +1,11 @@
+[Unit]
+Description=
+After=syslog.target
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/bin/python3 /home/cloud/telegramBots/apimania_bot/src/main.py
+
+[Install]
+WantedBy=multi-user.target
