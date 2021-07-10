@@ -43,6 +43,13 @@ def convert_table_to_json(url: str) -> str:
     return filename
 
 
+def convert_web_to_json(url: str) -> str:
+    filename = "{}.json".format(get_filename_from_url(url))
+    url = "{}/html2json?url={}".format(APIMANIA_URL, url)
+    download_file(url, filename, 'w')
+    return filename
+
+
 def convert_text_to_img(text: str) -> str:
     url = "{}/txt2img?text={}".format(APIMANIA_URL, text.replace(' ', '%20'))
     download_file(url, "{}.png".format(text))

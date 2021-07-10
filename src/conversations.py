@@ -4,7 +4,8 @@ from telegram import ChatAction, InlineKeyboardMarkup, InlineKeyboardButton, Par
 from telegram.ext import ConversationHandler
 
 from constants import about_text
-from utils import is_url, url_to_pdf, convert_text_to_img, convert_web_to_img, convert_table_to_json
+from utils import is_url, url_to_pdf, convert_text_to_img, convert_web_to_img, convert_table_to_json, \
+    convert_web_to_json
 
 
 def text_to_img_conversation(update, context):
@@ -96,6 +97,24 @@ def table_to_json_conversation(update, context):
 
     update.message.reply_text('Convirtiendo la tabla en json')
     filename = convert_table_to_json(url)
+    # send the json
+    chat.send_action(
+        action=ChatAction.UPLOAD_DOCUMENT,
+        timeout=None
+    )
+    chat.send_document(
+        document=open(filename, 'r')
+    )
+    os.unlink(filename)
+    return ConversationHandler.END
+
+
+def web_to_json_conversation(update, context):
+    url = update.message.text
+    chat = update.message.chat
+
+    update.message.reply_text('Convirtiendo la página web en json')
+    filename = convert_web_to_json(url)
     # send the json
     chat.send_action(
         action=ChatAction.UPLOAD_DOCUMENT,

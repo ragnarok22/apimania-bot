@@ -1,6 +1,6 @@
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
 
-from constants import WEB_TO_PDF, TEXT_TO_IMG, about_text, WEB_TO_IMG, TABLE_TO_JSON
+from constants import WEB_TO_PDF, TEXT_TO_IMG, about_text, WEB_TO_IMG, TABLE_TO_JSON, WEB_TO_JSON
 
 
 def start(update, context):
@@ -52,6 +52,11 @@ def web_to_pdf(update, context):
 def web_to_img(update, context):
     update.message.reply_text('Envíame la URL para tirarle una captura')
     return WEB_TO_IMG
+
+
+def web_to_json(update, context):
+    update.message.reply_text('Envíame una URL para convertirla a JSON')
+    return WEB_TO_JSON
 
 
 def table_to_json(update, context):

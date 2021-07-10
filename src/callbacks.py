@@ -1,4 +1,4 @@
-from constants import WEB_TO_PDF, TEXT_TO_IMG, WEB_TO_IMG, NOT_IMPLEMENTED, TABLE_TO_JSON
+from constants import WEB_TO_PDF, TEXT_TO_IMG, WEB_TO_IMG, NOT_IMPLEMENTED, TABLE_TO_JSON, WEB_TO_JSON
 
 
 def web_to_pdf_handler(update, context):
@@ -29,6 +29,16 @@ def text_to_img_handler(update, context):
         text='Envíame el texto a convertir en imagen'
     )
     return TEXT_TO_IMG
+
+
+def web_to_json_handler(update, context):
+    query = update.callback_query
+    query.answer()
+
+    query.edit_message_text(
+        text='Envíame una URL para convertirla a JSON'
+    )
+    return WEB_TO_JSON
 
 
 def table_to_json_handler(update, context):
