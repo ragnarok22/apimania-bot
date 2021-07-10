@@ -12,13 +12,13 @@ def input_web_url(update, context):
 
     if is_url(url):
         print('the URL is correct')
-        # capture de web
-        filename = url_to_pdf(url)
-        # send the pdf
         chat.send_action(
             action=ChatAction.UPLOAD_DOCUMENT,
             timeout=None
         )
+        # capture de web
+        filename = url_to_pdf(url)
+        # send the pdf
         chat.send_document(
             document=open(filename, 'rb')
         )
