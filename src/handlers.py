@@ -1,6 +1,6 @@
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
-from constants import WEB_TO_PDF
+from constants import WEB_TO_PDF, TEXT_TO_IMG
 
 
 def start(update, context):
@@ -33,6 +33,11 @@ def start(update, context):
 def web_to_pdf(update, context):
     update.message.reply_text('Envíame la URL para enviártela en PDF')
     return WEB_TO_PDF
+
+
+def text_to_img(update, context):
+    update.message.reply_text('Envíame el texto a convertir')
+    return TEXT_TO_IMG
 
 
 def about(update, context):

@@ -2,7 +2,25 @@ import os
 from telegram import ChatAction, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import ConversationHandler
 
-from utils import is_url, url_to_pdf
+from utils import is_url, url_to_pdf, convert_text_to_img
+
+
+def text_to_img_conversation(update, context):
+    text = update.message.text
+    chat = update.message.chat
+
+    update.message.reply_text('Convirtiendo el texto en imagen')
+    filename = convert_text_to_img(text)
+    # send the img
+    chat.send_action(
+        action=ChatAction.UPLOAD_PHOTO,
+        timeout=None
+    )
+    chat.send_photo(
+        photo=open(filename, 'rb')
+    )
+    os.unlink(filename)
+    return ConversationHandler.END
 
 
 def input_web_url(update, context):

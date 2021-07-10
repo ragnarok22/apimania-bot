@@ -29,9 +29,10 @@ def url_to_pdf(url: str) -> str:
     return filename
 
 
-def convert_text_to_img(text: str) -> None:
-    url = "{}/txt2img?text={}".format(APIMANIA_URL, text)
+def convert_text_to_img(text: str) -> str:
+    url = "{}/txt2img?text={}".format(APIMANIA_URL, text.replace(' ', '%20'))
     download_file(url, "{}.png".format(text))
+    return "{0}.png".format(text)
 
 
 def get_filename_from_url(url: str) -> str:
