@@ -35,4 +35,4 @@ def convert_text_to_img(text: str) -> None:
 
 
 def get_filename_from_url(url: str) -> str:
-    return url.split('://')[1].replace('.', '-')
+    return url.split('://')[1].split('/')[0].replace('.', '-')

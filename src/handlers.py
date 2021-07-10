@@ -10,7 +10,7 @@ def start(update, context):
     )
     web_to_pdf_button = InlineKeyboardButton(
         text='Web a PDF',
-        callback_data='webToPdf'
+        callback_data='web_to_pdf'
     )
     update.message.reply_text(
         text='Este es el bot de telegram de Apimania.\n\nCon él puedes crear PDF a partir de páginas web, convertir '
@@ -22,7 +22,7 @@ def start(update, context):
     )
 
 
-def webToPdf(update, context):
+def web_to_pdf(update, context):
     update.message.reply_text('Envíame la URL para enviártela en PDF')
     return WEB_TO_PDF
 
