@@ -2,7 +2,7 @@ import os
 from telegram import ChatAction
 from telegram.ext import ConversationHandler
 
-from src.utils import is_url, download_file
+from src.utils import is_url, url_to_pdf
 
 
 def input_web_url(update, context):
@@ -14,7 +14,7 @@ def input_web_url(update, context):
         print('the URL is correct')
         # capture de web
         filename = 'url-apimania.pdf'
-        download_file(url, filename)
+        url_to_pdf(url, filename)
         # send the pdf
         chat.send_action(
             action=ChatAction.UPLOAD_DOCUMENT,

@@ -15,9 +15,18 @@ def is_url(url: str) -> bool:
     return re.match(regex, url) is not None
 
 
-def download_file(download_url, filename):
-    url = APIMANIA_URL + '?url=' + download_url
-    response = urllib.request.urlopen(url)
+def download_file(download_url: str, filename: str) -> None:
+    response = urllib.request.urlopen(download_url)
     file = open(filename, 'wb')
     file.write(response.read())
     file.close()
+
+
+def url_to_pdf(url: str, filename: str) -> None:
+    url = "{}/pdf?url={}".format(APIMANIA_URL, url)
+    download_file(url, filename)
+
+
+def convert_text_to_img(text: str) -> None:
+    url = "{}/txt2img?text={}".format(APIMANIA_URL, text)
+    download_file(url, "{}.png".format(text))
