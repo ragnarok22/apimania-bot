@@ -1,7 +1,8 @@
 import os
-from telegram import ChatAction, InlineKeyboardMarkup, InlineKeyboardButton
+from telegram import ChatAction, InlineKeyboardMarkup, InlineKeyboardButton, ParseMode
 from telegram.ext import ConversationHandler
 
+from constants import about_text
 from utils import is_url, url_to_pdf, convert_text_to_img
 
 
@@ -52,17 +53,18 @@ def about_conversation(update, context):
     query = update.callback_query
     query.answer()
     ragnarok_button = InlineKeyboardButton(
-        text='@Ragnarok22',
+        text='Ragnarok22',
         url='https://ragnarok22.dev'
     )
     dsoto_button = InlineKeyboardButton(
-        text='@dsoto',
+        text='dsoto',
         url='https://dsoto.dev'
     )
 
     query.edit_message_text(
-        text='@Ragnarok22 es el creador del bot y @dsoto es el creador del API',
+        text=about_text,
         reply_markup=InlineKeyboardMarkup([
             [ragnarok_button, dsoto_button]
-        ])
+        ]),
+        parse_mode=ParseMode.MARKDOWN
     )
