@@ -1,6 +1,7 @@
 APIMANIA_URL = 'https://apimania.dsoto.dev/api'
 
 # states
+NOT_IMPLEMENTED = -1
 WEB_TO_PDF = 0
 WEB_TO_IMG = 1
 TEXT_TO_IMG = 2

@@ -3,10 +3,11 @@ import os
 from dotenv import load_dotenv
 from telegram.ext import CommandHandler, CallbackQueryHandler, Filters, MessageHandler, Updater
 
-from handlers import start, about, set_lang, web_to_pdf, text_to_img, web_to_img
-from callbacks import web_to_pdf_handler, text_to_img_handler, web_to_img_handler
-from constants import WEB_TO_PDF, TEXT_TO_IMG, WEB_TO_IMG
-from conversations import input_web_url, about_conversation, text_to_img_conversation, web_to_img_conversation
+from handlers import start, about, set_lang, web_to_pdf, text_to_img, web_to_img, not_implemented
+from callbacks import web_to_pdf_handler, text_to_img_handler, web_to_img_handler, not_implemented_handler
+from constants import WEB_TO_PDF, TEXT_TO_IMG, WEB_TO_IMG, NOT_IMPLEMENTED
+from conversations import input_web_url, about_conversation, text_to_img_conversation, web_to_img_conversation, \
+    not_implemented_conversation
 
 load_dotenv()
 updater = Updater(token=os.getenv('ACCESS_TOKEN'), use_context=True)
@@ -63,6 +64,26 @@ conversations = [
         ],
         'states': {
             WEB_TO_IMG: [MessageHandler(Filters.text, web_to_img_conversation)]
+        },
+        'fallbacks': []
+    },
+    {
+        'entry_points': [
+            CommandHandler('table_to_json', not_implemented),
+            CallbackQueryHandler(pattern='web_to_img', callback=not_implemented_handler)
+        ],
+        'states': {
+            NOT_IMPLEMENTED: [MessageHandler(Filters.text, not_implemented_conversation)]
+        },
+        'fallbacks': []
+    },
+    {
+        'entry_points': [
+            CommandHandler('web_to_json', not_implemented),
+            CallbackQueryHandler(pattern='web_to_img', callback=not_implemented_handler)
+        ],
+        'states': {
+            NOT_IMPLEMENTED: [MessageHandler(Filters.text, not_implemented_conversation)]
         },
         'fallbacks': []
     },

@@ -86,3 +86,9 @@ def about_conversation(update, context):
         ]),
         parse_mode=ParseMode.MARKDOWN
     )
+    return ConversationHandler.END
+
+
+def not_implemented_conversation(update, context):
+    update.message.reply_text('NOT_IMPLEMENTED')
+    return ConversationHandler.END

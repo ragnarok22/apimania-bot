@@ -1,4 +1,4 @@
-from constants import WEB_TO_PDF, TEXT_TO_IMG, WEB_TO_IMG
+from constants import WEB_TO_PDF, TEXT_TO_IMG, WEB_TO_IMG, NOT_IMPLEMENTED
 
 
 def web_to_pdf_handler(update, context):
@@ -29,3 +29,9 @@ def text_to_img_handler(update, context):
         text='Envíame el texto a convertir en imagen'
     )
     return TEXT_TO_IMG
+
+
+def not_implemented_handler(update, context):
+    query = update.callback_query
+    query.answer()
+    return NOT_IMPLEMENTED

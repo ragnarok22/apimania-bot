@@ -72,3 +72,7 @@ def set_lang(update, context):
     update.message.reply_text(
         text='work in progress'
     )
+
+
+def not_implemented(update, context):
+    update.message.reply_text('NOT_IMPLEMENTED')
