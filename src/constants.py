@@ -2,7 +2,8 @@ APIMANIA_URL = 'https://apimania.dsoto.dev/api'
 
 # states
 WEB_TO_PDF = 0
-TEXT_TO_IMG = 1
+WEB_TO_IMG = 1
+TEXT_TO_IMG = 2
 
 about_text = '*Sobre el bot:*\n' \
              'Este bot está basado en [APImania](https://apimania.dsoto.dev). Todas las funcionalidades son usando ' \

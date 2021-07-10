@@ -1,5 +1,5 @@
-import urllib.request
 import re
+import urllib.request
 
 from constants import APIMANIA_URL
 
@@ -25,6 +25,13 @@ def download_file(download_url: str, filename: str) -> None:
 def url_to_pdf(url: str) -> str:
     filename = "{}.pdf".format(get_filename_from_url(url))
     url = "{}/pdf?url={}".format(APIMANIA_URL, url)
+    download_file(url, filename)
+    return filename
+
+
+def convert_web_to_img(url: str) -> str:
+    filename = "{}.png".format(get_filename_from_url(url))
+    url = "{}/screenshot?url={}".format(APIMANIA_URL, url)
     download_file(url, filename)
     return filename
 

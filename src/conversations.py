@@ -3,7 +3,7 @@ from telegram import ChatAction, InlineKeyboardMarkup, InlineKeyboardButton, Par
 from telegram.ext import ConversationHandler
 
 from constants import about_text
-from utils import is_url, url_to_pdf, convert_text_to_img
+from utils import is_url, url_to_pdf, convert_text_to_img, convert_web_to_img
 
 
 def text_to_img_conversation(update, context):
@@ -12,6 +12,24 @@ def text_to_img_conversation(update, context):
 
     update.message.reply_text('Convirtiendo el texto en imagen')
     filename = convert_text_to_img(text)
+    # send the img
+    chat.send_action(
+        action=ChatAction.UPLOAD_PHOTO,
+        timeout=None
+    )
+    chat.send_photo(
+        photo=open(filename, 'rb')
+    )
+    os.unlink(filename)
+    return ConversationHandler.END
+
+
+def web_to_img_conversation(update, context):
+    url = update.message.text
+    chat = update.message.chat
+
+    update.message.reply_text('Tomándole una captura a la web')
+    filename = convert_web_to_img(url)
     # send the img
     chat.send_action(
         action=ChatAction.UPLOAD_PHOTO,

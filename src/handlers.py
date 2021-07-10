@@ -1,6 +1,6 @@
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
 
-from constants import WEB_TO_PDF, TEXT_TO_IMG, about_text
+from constants import WEB_TO_PDF, TEXT_TO_IMG, about_text, WEB_TO_IMG
 
 
 def start(update, context):
@@ -16,7 +16,11 @@ def start(update, context):
         text='Web a PDF',
         callback_data='web_to_pdf'
     )
-    text_to_img = InlineKeyboardButton(
+    web_to_img_button = InlineKeyboardButton(
+        text='Captura a web',
+        callback_data='web_to_img'
+    )
+    text_to_img_button = InlineKeyboardButton(
         text='Texto a imagen',
         callback_data='text_to_img'
     )
@@ -24,7 +28,8 @@ def start(update, context):
         text='Este es el bot de telegram de Apimania.\n\nCon él puedes crear PDF a partir de páginas web, convertir '
              'texto a imágenes, convertir tablas HTML a json y mucho más',
         reply_markup=InlineKeyboardMarkup([
-            [web_to_pdf_button, text_to_img],
+            [web_to_pdf_button, web_to_img_button],
+            [text_to_img_button],
             [apimania_button, about_authors],
         ])
     )
@@ -33,6 +38,11 @@ def start(update, context):
 def web_to_pdf(update, context):
     update.message.reply_text('Envíame la URL para enviártela en PDF')
     return WEB_TO_PDF
+
+
+def web_to_img(update, context):
+    update.message.reply_text('Envíame la URL para tirarle una captura')
+    return WEB_TO_IMG
 
 
 def text_to_img(update, context):
