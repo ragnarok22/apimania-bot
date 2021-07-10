@@ -1,15 +1,9 @@
-import os
 
-from dotenv import load_dotenv
-from telegram.ext import Updater, CommandHandler, ConversationHandler
+from telegram.ext import CommandHandler, ConversationHandler
 
-from config import handlers, conversations
+from config import handlers, conversations, dp, updater
 
 if __name__ == '__main__':
-    load_dotenv()
-    updater = Updater(token=os.getenv('ACCESS_TOKEN'), use_context=True)
-    dp = updater.dispatcher
-
     # handlers
     for handler in handlers:
         dp.add_handler(CommandHandler(handler.get('command'), handler.get('handler')))
