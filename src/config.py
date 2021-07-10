@@ -6,7 +6,7 @@ from telegram.ext import CommandHandler, CallbackQueryHandler, Filters, MessageH
 from handlers import start, about, set_lang, web_to_pdf
 from src.callbacks import web_to_pdf_handler
 from src.constants import WEB_TO_PDF
-from src.conversations import input_web_url
+from src.conversations import input_web_url, about_conversation
 
 load_dotenv()
 updater = Updater(token=os.getenv('ACCESS_TOKEN'), use_context=True)
@@ -35,6 +35,14 @@ conversations = [
         ],
         'states': {
             WEB_TO_PDF: [MessageHandler(Filters.text, input_web_url)]
+        },
+        'fallbacks': []
+    },
+    {
+        'entry_points': [
+            CallbackQueryHandler(pattern='about', callback=about_conversation),
+        ],
+        'states': {
         },
         'fallbacks': []
     }

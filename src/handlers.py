@@ -4,6 +4,10 @@ from constants import WEB_TO_PDF
 
 
 def start(update, context):
+    about_authors = InlineKeyboardButton(
+        text='Autores',
+        callback_data='about'
+    )
     apimania_button = InlineKeyboardButton(
         text='Página de Apimania',
         url='https://apimania.dsoto.dev'
@@ -12,12 +16,16 @@ def start(update, context):
         text='Web a PDF',
         callback_data='web_to_pdf'
     )
+    text_to_img = InlineKeyboardButton(
+        text='Texto a imagen',
+        callback_data='text_to_img'
+    )
     update.message.reply_text(
         text='Este es el bot de telegram de Apimania.\n\nCon él puedes crear PDF a partir de páginas web, convertir '
              'texto a imágenes, convertir tablas HTML a json y mucho más',
         reply_markup=InlineKeyboardMarkup([
-            [apimania_button],
-            [web_to_pdf_button]
+            [web_to_pdf_button, text_to_img],
+            [apimania_button, about_authors],
         ])
     )
 
