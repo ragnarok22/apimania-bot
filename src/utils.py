@@ -15,10 +15,10 @@ def is_url(url: str) -> bool:
     return re.match(regex, url) is not None
 
 
-def download_file(download_url: str, filename: str) -> None:
+def download_file(download_url: str, filename: str, open_type='wb') -> None:
     response = urllib.request.urlopen(download_url)
-    file = open(filename, 'wb')
-    file.write(response.read())
+    file = open(filename, open_type)
+    file.write(response.read().decode('utf-8'))
     file.close()
 
 
@@ -33,6 +33,13 @@ def convert_web_to_img(url: str) -> str:
     filename = "{}.png".format(get_filename_from_url(url))
     url = "{}/screenshot?url={}".format(APIMANIA_URL, url)
     download_file(url, filename)
+    return filename
+
+
+def convert_table_to_json(url: str) -> str:
+    filename = "{}.json".format(get_filename_from_url(url))
+    url = "{}/table?url={}".format(APIMANIA_URL, url)
+    download_file(url, filename, 'w')
     return filename
 
 
