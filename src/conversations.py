@@ -3,9 +3,8 @@ import os
 from telegram import ChatAction, InlineKeyboardMarkup, InlineKeyboardButton, ParseMode
 from telegram.ext import ConversationHandler
 
+import utils
 from constants import about_text
-from utils import is_url, url_to_pdf, convert_text_to_img, convert_web_to_img, convert_table_to_json, \
-    convert_web_to_json
 
 
 def text_to_img_conversation(update, context):
@@ -13,7 +12,7 @@ def text_to_img_conversation(update, context):
     chat = update.message.chat
 
     update.message.reply_text('Convirtiendo el texto en imagen')
-    filename = convert_text_to_img(text)
+    filename = utils.convert_text_to_img(text)
     # send the img
     chat.send_action(
         action=ChatAction.UPLOAD_PHOTO,
@@ -31,7 +30,7 @@ def web_to_img_conversation(update, context):
     chat = update.message.chat
 
     update.message.reply_text('Tomándole una captura a la web')
-    filename = convert_web_to_img(url)
+    filename = utils.convert_web_to_img(url)
     # send the img
     chat.send_action(
         action=ChatAction.UPLOAD_PHOTO,
@@ -49,11 +48,11 @@ def input_web_url(update, context):
     chat = update.message.chat
     print('URL', url)
 
-    if is_url(url):
+    if utils.is_url(url):
         print('the URL is correct')
         # capture de web
         update.message.reply_text('Convirtiendo la página en PDF')
-        filename = url_to_pdf(url)
+        filename = utils.url_to_pdf(url)
         # send the pdf
         chat.send_action(
             action=ChatAction.UPLOAD_DOCUMENT,
@@ -96,7 +95,7 @@ def table_to_json_conversation(update, context):
     chat = update.message.chat
 
     update.message.reply_text('Convirtiendo la tabla en json')
-    filename = convert_table_to_json(url)
+    filename = utils.convert_table_to_json(url)
     # send the json
     chat.send_action(
         action=ChatAction.UPLOAD_DOCUMENT,
@@ -114,7 +113,7 @@ def web_to_json_conversation(update, context):
     chat = update.message.chat
 
     update.message.reply_text('Convirtiendo la página web en json')
-    filename = convert_web_to_json(url)
+    filename = utils.convert_web_to_json(url)
     # send the json
     chat.send_action(
         action=ChatAction.UPLOAD_DOCUMENT,

@@ -1,6 +1,6 @@
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
 
-from constants import WEB_TO_PDF, TEXT_TO_IMG, about_text, WEB_TO_IMG, TABLE_TO_JSON, WEB_TO_JSON
+import constants
 
 
 def start(update, context):
@@ -46,27 +46,27 @@ def start(update, context):
 
 def web_to_pdf(update, context):
     update.message.reply_text('Envíame la URL para enviártela en PDF')
-    return WEB_TO_PDF
+    return constants.WEB_TO_PDF
 
 
 def web_to_img(update, context):
     update.message.reply_text('Envíame la URL para tirarle una captura')
-    return WEB_TO_IMG
+    return constants.WEB_TO_IMG
 
 
 def web_to_json(update, context):
     update.message.reply_text('Envíame una URL para convertirla a JSON')
-    return WEB_TO_JSON
+    return constants.WEB_TO_JSON
 
 
 def table_to_json(update, context):
     update.message.reply_text('Envíame la URL de la tabla')
-    return TABLE_TO_JSON
+    return constants.TABLE_TO_JSON
 
 
 def text_to_img(update, context):
     update.message.reply_text('Envíame el texto a convertir')
-    return TEXT_TO_IMG
+    return constants.TEXT_TO_IMG
 
 
 def about(update, context):
@@ -79,7 +79,7 @@ def about(update, context):
         url='https://dsoto.dev'
     )
     update.message.reply_text(
-        text=about_text,
+        text=constants.about_text,
         reply_markup=InlineKeyboardMarkup([
             [ragnarok_button, dsoto_button]
         ]),
