@@ -3,13 +3,13 @@ import os
 from dotenv import load_dotenv
 from telegram.ext import CommandHandler, CallbackQueryHandler, Filters, MessageHandler, Updater
 
-from handlers import start, about, set_lang, web_to_pdf, text_to_img, web_to_img, not_implemented, table_to_json, \
-    web_to_json
-from callbacks import web_to_pdf_handler, text_to_img_handler, web_to_img_handler, not_implemented_handler, \
-    table_to_json_handler, web_to_json_handler
-from constants import WEB_TO_PDF, TEXT_TO_IMG, WEB_TO_IMG, NOT_IMPLEMENTED, TABLE_TO_JSON, WEB_TO_JSON
+from callbacks import web_to_pdf_handler, text_to_img_handler, web_to_img_handler, table_to_json_handler, \
+    web_to_json_handler
+from constants import WEB_TO_PDF, TEXT_TO_IMG, WEB_TO_IMG, TABLE_TO_JSON, WEB_TO_JSON
 from conversations import input_web_url, about_conversation, text_to_img_conversation, web_to_img_conversation, \
-    not_implemented_conversation, table_to_json_conversation, web_to_json_conversation
+    table_to_json_conversation, web_to_json_conversation
+from handlers import start, about, set_lang, web_to_pdf, text_to_img, web_to_img, table_to_json, \
+    web_to_json
 
 load_dotenv()
 updater = Updater(token=os.getenv('TELEGRAM_TOKEN'), use_context=True)
@@ -47,7 +47,6 @@ conversations = [
         ],
         'states': {
         },
-        'fallbacks': []
     },
     {
         'entry_points': [
@@ -57,7 +56,6 @@ conversations = [
         'states': {
             TEXT_TO_IMG: [MessageHandler(Filters.text, text_to_img_conversation)]
         },
-        'fallbacks': []
     },
     {
         'entry_points': [
@@ -67,7 +65,6 @@ conversations = [
         'states': {
             WEB_TO_IMG: [MessageHandler(Filters.text, web_to_img_conversation)]
         },
-        'fallbacks': []
     },
     {
         'entry_points': [
@@ -77,7 +74,6 @@ conversations = [
         'states': {
             TABLE_TO_JSON: [MessageHandler(Filters.text, table_to_json_conversation)]
         },
-        'fallbacks': []
     },
     {
         'entry_points': [
@@ -87,6 +83,5 @@ conversations = [
         'states': {
             WEB_TO_JSON: [MessageHandler(Filters.text, web_to_json_conversation)]
         },
-        'fallbacks': []
     },
 ]

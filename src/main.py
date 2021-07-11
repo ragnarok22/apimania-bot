@@ -13,7 +13,7 @@ if __name__ == '__main__':
         dp.add_handler(ConversationHandler(
             entry_points=conversation.get('entry_points'),
             states=conversation.get('states'),
-            fallbacks=conversation.get('fallbacks')
+            fallbacks=conversation.get('fallbacks', [])
         ))
 
     updater.start_polling()
