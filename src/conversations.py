@@ -29,17 +29,20 @@ def web_to_img_conversation(update, context):
     url = update.message.text
     chat = update.message.chat
 
-    update.message.reply_text('Tomándole una captura a la web')
-    filename = utils.convert_web_to_img(url)
-    # send the img
-    chat.send_action(
-        action=ChatAction.UPLOAD_PHOTO,
-        timeout=None
-    )
-    chat.send_photo(
-        photo=open(filename, 'rb')
-    )
-    os.unlink(filename)
+    if utils.is_url(url):
+        update.message.reply_text('Tomándole una captura a la web')
+        filename = utils.convert_web_to_img(url)
+        # send the img
+        chat.send_action(
+            action=ChatAction.UPLOAD_PHOTO,
+            timeout=None
+        )
+        chat.send_photo(
+            photo=open(filename, 'rb')
+        )
+        os.unlink(filename)
+    else:
+        update.message.reply_text('debes de enviar una URL válida. Ejemplo: http://google.com')
     return ConversationHandler.END
 
 
@@ -94,17 +97,20 @@ def table_to_json_conversation(update, context):
     url = update.message.text
     chat = update.message.chat
 
-    update.message.reply_text('Convirtiendo la tabla en json')
-    filename = utils.convert_table_to_json(url)
-    # send the json
-    chat.send_action(
-        action=ChatAction.UPLOAD_DOCUMENT,
-        timeout=None
-    )
-    chat.send_document(
-        document=open(filename, 'r')
-    )
-    os.unlink(filename)
+    if utils.is_url(url):
+        update.message.reply_text('Convirtiendo la tabla en json')
+        filename = utils.convert_table_to_json(url)
+        # send the json
+        chat.send_action(
+            action=ChatAction.UPLOAD_DOCUMENT,
+            timeout=None
+        )
+        chat.send_document(
+            document=open(filename, 'r')
+        )
+        os.unlink(filename)
+    else:
+        update.message.reply_text('debes de enviar una URL válida. Ejemplo: http://google.com')
     return ConversationHandler.END
 
 
@@ -112,17 +118,20 @@ def web_to_json_conversation(update, context):
     url = update.message.text
     chat = update.message.chat
 
-    update.message.reply_text('Convirtiendo la página web en json')
-    filename = utils.convert_web_to_json(url)
-    # send the json
-    chat.send_action(
-        action=ChatAction.UPLOAD_DOCUMENT,
-        timeout=None
-    )
-    chat.send_document(
-        document=open(filename, 'r')
-    )
-    os.unlink(filename)
+    if utils.is_url(url):
+        update.message.reply_text('Convirtiendo la página web en json')
+        filename = utils.convert_web_to_json(url)
+        # send the json
+        chat.send_action(
+            action=ChatAction.UPLOAD_DOCUMENT,
+            timeout=None
+        )
+        chat.send_document(
+            document=open(filename, 'r')
+        )
+        os.unlink(filename)
+    else:
+        update.message.reply_text('debes de enviar una URL válida. Ejemplo: http://google.com')
     return ConversationHandler.END
 
 
