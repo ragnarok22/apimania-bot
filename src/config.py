@@ -1,3 +1,4 @@
+import logging
 import os
 
 from dotenv import load_dotenv
@@ -9,6 +10,9 @@ import conversations
 import handlers as handlers_module
 
 load_dotenv()
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
+logger = logging.getLogger('APImaniaBot')
+
 updater = Updater(token=os.getenv('TELEGRAM_TOKEN'), use_context=True)
 dp = updater.dispatcher
 

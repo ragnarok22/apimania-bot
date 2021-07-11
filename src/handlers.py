@@ -1,9 +1,12 @@
+import logging
+
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
 
 import constants
 
 
 def start(update, context):
+    logging.info(update)
     about_authors = InlineKeyboardButton(
         text='Sobre el bot',
         callback_data='about'
@@ -33,8 +36,8 @@ def start(update, context):
         callback_data='web_to_json'
     )
     update.message.reply_text(
-        text='Este es el bot de telegram de Apimania.\n\nCon él puedes crear PDF a partir de páginas web, convertir '
-             'texto a imágenes, convertir tablas HTML a json y mucho más',
+        text='Hola {0}. Este es el bot de telegram de Apimania.\n\nCon él puedes crear PDF a partir de páginas web, convertir '
+             'texto a imágenes, convertir tablas HTML a json y mucho más'.format(update.message.chat.first_name),
         reply_markup=InlineKeyboardMarkup([
             [web_to_pdf_button, web_to_img_button],
             [text_to_img_button],
