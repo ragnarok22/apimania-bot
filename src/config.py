@@ -12,7 +12,7 @@ from conversations import input_web_url, about_conversation, text_to_img_convers
     not_implemented_conversation, table_to_json_conversation, web_to_json_conversation
 
 load_dotenv()
-updater = Updater(token=os.getenv('ACCESS_TOKEN'), use_context=True)
+updater = Updater(token=os.getenv('TELEGRAM_TOKEN'), use_context=True)
 dp = updater.dispatcher
 
 handlers = [
