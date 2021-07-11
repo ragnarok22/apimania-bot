@@ -18,7 +18,10 @@ def is_url(url: str) -> bool:
 def download_file(download_url: str, filename: str, open_type='wb') -> None:
     response = urllib.request.urlopen(download_url)
     file = open(filename, open_type)
-    file.write(response.read().decode('utf-8'))
+    output = response.read()
+    if open_type != 'wb':
+        output = output.decode('utf-8')
+    file.write(output)
     file.close()
 
 
