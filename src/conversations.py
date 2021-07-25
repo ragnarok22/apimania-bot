@@ -82,11 +82,16 @@ def about_conversation(update: Update, context: CallbackContext) -> int:
         text='dsoto',
         url='https://dsoto.dev'
     )
+    back_button = InlineKeyboardButton(
+        text='⬅️ Regresar',
+        callback_data='main'
+    )
 
     query.edit_message_text(
         text=about_text,
         reply_markup=InlineKeyboardMarkup([
-            [ragnarok_button, dsoto_button]
+            [ragnarok_button, dsoto_button],
+            [back_button]
         ]),
         parse_mode=ParseMode.MARKDOWN
     )

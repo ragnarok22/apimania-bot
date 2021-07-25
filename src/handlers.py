@@ -38,7 +38,8 @@ def start(update: Update, context: CallbackContext) -> None:
     )
     update.message.reply_text(
         text='Hola {0}. Este es el bot de telegram de Apimania.\n\nCon él puedes crear PDF a partir de páginas web, '
-             'convertir texto a imágenes, convertir tablas HTML a json y mucho más'.format(update.message.chat.first_name),
+             'convertir texto a imágenes, convertir tablas HTML a json y mucho más'.format(
+            update.message.chat.first_name),
         reply_markup=InlineKeyboardMarkup([
             [web_to_pdf_button, web_to_img_button],
             [text_to_img_button],
@@ -82,10 +83,15 @@ def about(update: Update, context: CallbackContext) -> None:
         text='dsoto',
         url='https://dsoto.dev'
     )
+    back_button = InlineKeyboardButton(
+        text='⬅️Regresar',
+        callback_data='main'
+    )
     update.message.reply_text(
         text=constants.about_text,
         reply_markup=InlineKeyboardMarkup([
-            [ragnarok_button, dsoto_button]
+            [ragnarok_button, dsoto_button],
+            [back_button]
         ]),
         parse_mode=ParseMode.MARKDOWN
     )

@@ -1,6 +1,6 @@
-from telegram.ext import CommandHandler, ConversationHandler
+from telegram.ext import CommandHandler, ConversationHandler, CallbackQueryHandler
 
-from config import handlers, conversations, dp, updater
+from config import handlers, conversations, dp, updater, callbacks
 
 if __name__ == '__main__':
     # handlers
@@ -14,6 +14,10 @@ if __name__ == '__main__':
             states=conversation.get('states'),
             fallbacks=conversation.get('fallbacks', [])
         ))
+
+    # callbacks
+    for callback in callbacks:
+        dp.add_handler(CallbackQueryHandler(callback.get('handler'), callback.get('pattern')))
 
     updater.start_polling()
     print('Bot is polling')
