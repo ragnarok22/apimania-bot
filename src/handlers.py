@@ -6,7 +6,7 @@ from telegram.ext import CallbackContext
 import constants
 
 
-def start(update: Update, context: CallbackContext):
+def start(update: Update, context: CallbackContext) -> None:
     logging.info(update.message.chat)
     about_authors = InlineKeyboardButton(
         text='Sobre el bot',
@@ -48,32 +48,32 @@ def start(update: Update, context: CallbackContext):
     )
 
 
-def web_to_pdf(update: Update, context: CallbackContext):
+def web_to_pdf(update: Update, context: CallbackContext) -> int:
     update.message.reply_text('Envíame la URL para enviártela en PDF')
     return constants.WEB_TO_PDF
 
 
-def web_to_img(update: Update, context: CallbackContext):
+def web_to_img(update: Update, context: CallbackContext) -> int:
     update.message.reply_text('Envíame la URL para tirarle una captura')
     return constants.WEB_TO_IMG
 
 
-def web_to_json(update: Update, context: CallbackContext):
+def web_to_json(update: Update, context: CallbackContext) -> int:
     update.message.reply_text('Envíame una URL para convertirla a JSON')
     return constants.WEB_TO_JSON
 
 
-def table_to_json(update: Update, context: CallbackContext):
+def table_to_json(update: Update, context: CallbackContext) -> int:
     update.message.reply_text('Envíame la URL de la tabla')
     return constants.TABLE_TO_JSON
 
 
-def text_to_img(update: Update, context: CallbackContext):
+def text_to_img(update: Update, context: CallbackContext) -> int:
     update.message.reply_text('Envíame el texto a convertir')
     return constants.TEXT_TO_IMG
 
 
-def about(update: Update, context: CallbackContext):
+def about(update: Update, context: CallbackContext) -> None:
     ragnarok_button = InlineKeyboardButton(
         text='Ragnarok22',
         url='https://ragnarok22.dev'
@@ -91,11 +91,11 @@ def about(update: Update, context: CallbackContext):
     )
 
 
-def set_lang(update: Update, context: CallbackContext):
+def set_lang(update: Update, context: CallbackContext) -> None:
     update.message.reply_text(
         text='work in progress'
     )
 
 
-def not_implemented(update: Update, context: CallbackContext):
+def not_implemented(update: Update, context: CallbackContext) -> None:
     update.message.reply_text('NOT_IMPLEMENTED')

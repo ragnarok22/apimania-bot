@@ -2,6 +2,7 @@ import re
 import urllib.request
 
 from constants import APIMANIA_URL
+# TODO: add documentation for every function
 
 
 def is_url(url: str) -> bool:
@@ -16,6 +17,8 @@ def is_url(url: str) -> bool:
 
 
 def download_file(download_url: str, filename: str, open_type='wb') -> None:
+    # TODO: wrap request in try-catch and handle de errors
+    # TODO: using urllib3 or requests module
     response = urllib.request.urlopen(download_url)
     file = open(filename, open_type)
     output = response.read()
