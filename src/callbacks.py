@@ -1,7 +1,10 @@
+from telegram import Update
+from telegram.ext import CallbackContext
+
 import constants
 
 
-def web_to_pdf_handler(update, context):
+def web_to_pdf_handler(update: Update, context: CallbackContext):
     query = update.callback_query
     query.answer()
 
@@ -11,7 +14,7 @@ def web_to_pdf_handler(update, context):
     return constants.WEB_TO_PDF
 
 
-def web_to_img_handler(update, context):
+def web_to_img_handler(update: Update, context: CallbackContext):
     query = update.callback_query
     query.answer()
 
@@ -21,7 +24,7 @@ def web_to_img_handler(update, context):
     return constants.WEB_TO_IMG
 
 
-def text_to_img_handler(update, context):
+def text_to_img_handler(update: Update, context: CallbackContext):
     query = update.callback_query
     query.answer()
 
@@ -31,7 +34,7 @@ def text_to_img_handler(update, context):
     return constants.TEXT_TO_IMG
 
 
-def web_to_json_handler(update, context):
+def web_to_json_handler(update: Update, context: CallbackContext):
     query = update.callback_query
     query.answer()
 
@@ -41,7 +44,7 @@ def web_to_json_handler(update, context):
     return constants.WEB_TO_JSON
 
 
-def table_to_json_handler(update, context):
+def table_to_json_handler(update: Update, context: CallbackContext):
     query = update.callback_query
     query.answer()
 
@@ -51,7 +54,7 @@ def table_to_json_handler(update, context):
     return constants.TABLE_TO_JSON
 
 
-def not_implemented_handler(update, context):
+def not_implemented_handler(update: Update, context: CallbackContext):
     query = update.callback_query
     query.answer()
     return constants.NOT_IMPLEMENTED

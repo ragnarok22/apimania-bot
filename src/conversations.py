@@ -1,13 +1,13 @@
 import os
 
-from telegram import ChatAction, InlineKeyboardMarkup, InlineKeyboardButton, ParseMode
-from telegram.ext import ConversationHandler
+from telegram import ChatAction, InlineKeyboardMarkup, InlineKeyboardButton, ParseMode, Update
+from telegram.ext import ConversationHandler, CallbackContext
 
 import utils
 from constants import about_text
 
 
-def text_to_img_conversation(update, context):
+def text_to_img_conversation(update: Update, context: CallbackContext):
     text = update.message.text
     chat = update.message.chat
 
@@ -25,7 +25,7 @@ def text_to_img_conversation(update, context):
     return ConversationHandler.END
 
 
-def web_to_img_conversation(update, context):
+def web_to_img_conversation(update: Update, context: CallbackContext):
     url = update.message.text
     chat = update.message.chat
 
@@ -46,7 +46,7 @@ def web_to_img_conversation(update, context):
     return ConversationHandler.END
 
 
-def input_web_url(update, context):
+def input_web_url(update: Update, context: CallbackContext):
     url = update.message.text
     chat = update.message.chat
     print('URL', url)
@@ -71,7 +71,7 @@ def input_web_url(update, context):
     return ConversationHandler.END
 
 
-def about_conversation(update, context):
+def about_conversation(update: Update, context: CallbackContext):
     query = update.callback_query
     query.answer()
     ragnarok_button = InlineKeyboardButton(
@@ -93,7 +93,7 @@ def about_conversation(update, context):
     return ConversationHandler.END
 
 
-def table_to_json_conversation(update, context):
+def table_to_json_conversation(update: Update, context: CallbackContext):
     url = update.message.text
     chat = update.message.chat
 
@@ -114,7 +114,7 @@ def table_to_json_conversation(update, context):
     return ConversationHandler.END
 
 
-def web_to_json_conversation(update, context):
+def web_to_json_conversation(update: Update, context: CallbackContext):
     url = update.message.text
     chat = update.message.chat
 
@@ -135,6 +135,6 @@ def web_to_json_conversation(update, context):
     return ConversationHandler.END
 
 
-def not_implemented_conversation(update, context):
+def not_implemented_conversation(update: Update, context: CallbackContext):
     update.message.reply_text('NOT_IMPLEMENTED')
     return ConversationHandler.END
