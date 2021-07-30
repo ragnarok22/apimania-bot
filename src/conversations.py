@@ -4,7 +4,7 @@ from telegram import ChatAction, InlineKeyboardMarkup, InlineKeyboardButton, Par
 from telegram.ext import ConversationHandler, CallbackContext
 
 import utils
-from constants import about_text
+from constants import about_text, BACK_BUTTON
 
 
 def text_to_img_conversation(update: Update, context: CallbackContext) -> int:
@@ -82,16 +82,12 @@ def about_conversation(update: Update, context: CallbackContext) -> int:
         text='dsoto',
         url='https://dsoto.dev'
     )
-    back_button = InlineKeyboardButton(
-        text='⬅️ Regresar',
-        callback_data='main'
-    )
 
     query.edit_message_text(
         text=about_text,
         reply_markup=InlineKeyboardMarkup([
             [ragnarok_button, dsoto_button],
-            [back_button]
+            [BACK_BUTTON]
         ]),
         parse_mode=ParseMode.MARKDOWN
     )

@@ -52,7 +52,9 @@ conversations = [
         'states': {
             constants.WEB_TO_PDF: [MessageHandler(Filters.text, conversations.input_web_url)]
         },
-        'fallbacks': []
+        'fallbacks': [
+            CallbackQueryHandler(pattern='main', callback=callbacks_module.main_menu_callback)
+        ]
     },
     {
         'entry_points': [
@@ -69,6 +71,9 @@ conversations = [
         'states': {
             constants.TEXT_TO_IMG: [MessageHandler(Filters.text, conversations.text_to_img_conversation)]
         },
+        'fallbacks': [
+            CallbackQueryHandler(pattern='main', callback=callbacks_module.main_menu_callback)
+        ]
     },
     {
         'entry_points': [
@@ -78,6 +83,9 @@ conversations = [
         'states': {
             constants.WEB_TO_IMG: [MessageHandler(Filters.text, conversations.web_to_img_conversation)]
         },
+        'fallbacks': [
+            CallbackQueryHandler(pattern='main', callback=callbacks_module.main_menu_callback)
+        ]
     },
     {
         'entry_points': [
@@ -87,6 +95,9 @@ conversations = [
         'states': {
             constants.TABLE_TO_JSON: [MessageHandler(Filters.text, conversations.table_to_json_conversation)]
         },
+        'fallbacks': [
+            CallbackQueryHandler(pattern='main', callback=callbacks_module.main_menu_callback)
+        ]
     },
     {
         'entry_points': [
@@ -96,6 +107,9 @@ conversations = [
         'states': {
             constants.WEB_TO_JSON: [MessageHandler(Filters.text, conversations.web_to_json_conversation)]
         },
+        'fallbacks': [
+            CallbackQueryHandler(pattern='main', callback=callbacks_module.main_menu_callback)
+        ]
     },
 ]
 

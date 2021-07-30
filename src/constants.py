@@ -1,4 +1,4 @@
-from telegram import InlineKeyboardButton
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
 APIMANIA_URL = 'https://apimania.dsoto.dev/api'
 
@@ -52,3 +52,11 @@ BUTTONS_MARKUP = [
     [table_to_json_button, web_to_json_button],
     [apimania_button, about_authors],
 ]
+
+BACK_BUTTON = InlineKeyboardButton(
+    text='⬅️ Regresar',
+    callback_data='main'
+)
+BACK_MARKUP = InlineKeyboardMarkup([
+    [BACK_BUTTON]
+])
