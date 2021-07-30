@@ -8,6 +8,7 @@ import callbacks as callbacks_module
 import constants
 import conversations
 import handlers as handlers_module
+import fallbacks
 
 load_dotenv()
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)

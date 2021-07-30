@@ -3,9 +3,6 @@ from telegram.ext import CommandHandler, ConversationHandler, CallbackQueryHandl
 from config import handlers, conversations, dp, updater, callbacks
 
 if __name__ == '__main__':
-    # handlers
-    for handler in handlers:
-        dp.add_handler(CommandHandler(handler.get('command'), handler.get('handler')))
 
     # conversations handlers
     for conversation in conversations:
@@ -18,6 +15,10 @@ if __name__ == '__main__':
     # callbacks
     for callback in callbacks:
         dp.add_handler(CallbackQueryHandler(callback.get('handler'), callback.get('pattern')))
+
+    # handlers
+    for handler in handlers:
+        dp.add_handler(CommandHandler(handler.get('command'), handler.get('handler')))
 
     updater.start_polling()
     print('Bot is polling')
