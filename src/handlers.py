@@ -2,11 +2,25 @@ import logging
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.ext import CallbackContext
+from tinydb import Query
 
 import constants
+import config
 
 
 def start(update: Update, context: CallbackContext) -> None:
+    chat = update.message.chat
+    User = Query()
+    users = config.db.search(User.id == chat.id)
+    if len(users) == 0:
+        # if user don't exists, save it.
+        config.db.insert({
+            'id': chat.id,
+            'first_name': chat.first_name,
+            'last_name': chat.last_name,
+            'username': chat.username,
+            'type': chat.type
+        })
     logging.info(update.message.chat)
     about_authors = InlineKeyboardButton(
         text='Sobre el bot',

@@ -102,4 +102,4 @@ conversations = [
 DATABASE = {
     'NAME': 'db.json'
 }
-db = TinyDB(DATABASE.get('NAME', 'db.json'))
+db = TinyDB(os.path.join(BASE_DIR, DATABASE.get('NAME', 'db.json')))
