@@ -22,44 +22,12 @@ def start(update: Update, context: CallbackContext) -> None:
             'type': chat.type
         })
     logging.info(update.message.chat)
-    about_authors = InlineKeyboardButton(
-        text='Sobre el bot',
-        callback_data='about'
-    )
-    apimania_button = InlineKeyboardButton(
-        text='Página de Apimania',
-        url='https://apimania.dsoto.dev'
-    )
-    web_to_pdf_button = InlineKeyboardButton(
-        text='Web a PDF',
-        callback_data='web_to_pdf'
-    )
-    web_to_img_button = InlineKeyboardButton(
-        text='Captura a web',
-        callback_data='web_to_img'
-    )
-    text_to_img_button = InlineKeyboardButton(
-        text='Texto a imagen',
-        callback_data='text_to_img'
-    )
-    table_to_json_button = InlineKeyboardButton(
-        text='Tabla HTML a JSON',
-        callback_data='table_to_json'
-    )
-    web_to_json_button = InlineKeyboardButton(
-        text='Página web a JSON',
-        callback_data='web_to_json'
-    )
+
     update.message.reply_text(
         text='Hola {0}. Este es el bot de telegram de Apimania.\n\nCon él puedes crear PDF a partir de páginas web, '
              'convertir texto a imágenes, convertir tablas HTML a json y mucho más'.format(
             update.message.chat.first_name),
-        reply_markup=InlineKeyboardMarkup([
-            [web_to_pdf_button, web_to_img_button],
-            [text_to_img_button],
-            [table_to_json_button, web_to_json_button],
-            [apimania_button, about_authors],
-        ])
+        reply_markup=InlineKeyboardMarkup(constants.BUTTONS_MARKUP)
     )
 
 
