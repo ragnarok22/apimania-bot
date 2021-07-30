@@ -1,6 +1,6 @@
 from telegram.ext import CommandHandler, ConversationHandler, CallbackQueryHandler
 
-from config import handlers, conversations, dp, updater, callbacks
+from config import handlers, conversations, dp, updater, callbacks, BASE_DIR
 
 if __name__ == '__main__':
 

@@ -1,8 +1,10 @@
 import logging
 import os
+from pathlib import Path
 
 from dotenv import load_dotenv
 from telegram.ext import CommandHandler, CallbackQueryHandler, Filters, MessageHandler, Updater
+from tinydb import TinyDB
 
 import callbacks as callbacks_module
 import constants
@@ -16,6 +18,8 @@ logger = logging.getLogger('APImaniaBot')
 
 updater = Updater(token=os.getenv('TELEGRAM_TOKEN'), use_context=True)
 dp = updater.dispatcher
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 handlers = [
     {
@@ -94,3 +98,8 @@ conversations = [
         },
     },
 ]
+
+DATABASE = {
+    'NAME': 'db.json'
+}
+db = TinyDB(DATABASE.get('NAME', 'db.json'))
