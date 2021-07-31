@@ -1,8 +1,12 @@
 import re
 import urllib.request
 
-from constants import APIMANIA_URL
+from telegram import Chat
+from tinydb import Query
+
 # TODO: add documentation for every function
+import config
+from constants import APIMANIA_URL
 
 
 def is_url(url: str) -> bool:
@@ -64,3 +68,17 @@ def convert_text_to_img(text: str) -> str:
 
 def get_filename_from_url(url: str) -> str:
     return url.split('://')[1].split('/')[0].replace('.', '-')
+
+
+def save_user(chat: Chat):
+    User = Query()
+    users = config.db.search(User.id == chat.id)
+    if len(users) == 0:
+        # if user don't exists, save it.
+        config.db.insert({
+            'id': chat.id,
+            'first_name': chat.first_name,
+            'last_name': chat.last_name,
+            'username': chat.username,
+            'type': chat.type
+        })

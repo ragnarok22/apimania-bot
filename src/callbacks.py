@@ -1,12 +1,14 @@
-from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import Update, InlineKeyboardMarkup
 from telegram.ext import CallbackContext, ConversationHandler
 
 import constants
+from utils import save_user
 
 
 def main_menu_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     query.answer()
+    save_user(query.message.chat)
 
     query.edit_message_text(
         text='¿Qué deseas hacer?',
