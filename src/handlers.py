@@ -31,6 +31,13 @@ def start(update: Update, context: CallbackContext) -> None:
     )
 
 
+def stats(update: Update, context: CallbackContext):
+    update.message.reply_text(
+        text=f'Usuarios registrados: {len(config.db.all())}',
+        reply_markup=constants.BACK_MARKUP
+    )
+
+
 def web_to_pdf(update: Update, context: CallbackContext) -> int:
     update.message.reply_text('Envíame la URL para enviártela en PDF')
     return constants.WEB_TO_PDF

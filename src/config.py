@@ -27,6 +27,10 @@ handlers = [
         'handler': handlers_module.start
     },
     {
+        'command': 'stats',
+        'handler': handlers_module.stats
+    },
+    {
         'command': 'about',
         'handler': handlers_module.about
     },
