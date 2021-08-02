@@ -2,19 +2,9 @@
 Apimania Bot
 ============
 
-
-.. image:: https://img.shields.io/pypi/v/apimania_bot.svg
-        :target: https://pypi.python.org/pypi/apimania_bot
-
-.. image:: https://img.shields.io/travis/ragnarok22/apimania_bot.svg
-        :target: https://travis-ci.com/ragnarok22/apimania_bot
-
-.. image:: https://readthedocs.org/projects/apimania-bot/badge/?version=latest
-        :target: https://apimania-bot.readthedocs.io/en/latest/?version=latest
-        :alt: Documentation Status
-
-
-
+.. image:: https://img.shields.io/github/deployments/ragnarok22/apimania-bot/apimania-bot?label=vercel&logo=vercel&logoColor=white
+        :target: https://t.me/apimaniaBot
+        :alt: Production status
 
 Telegram bot for dsoto's apimania
 
